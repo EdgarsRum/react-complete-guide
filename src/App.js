@@ -1,4 +1,5 @@
 import Expenses from './components/expenses/Expenses';
+import NewExpense from './components/newExpenses/NewExpense';
 
 import './App.css';
 
@@ -26,7 +27,17 @@ function App() {
     },
   ];
 
-  return <Expenses expenses={expenses}/>
+  const addExpenseHandler = (expense) => {
+    console.log('In App.js');
+    console.log(expense)
+    //TODO: need to add state here so ExpenseList updates
+    //expenses.push(expense);
+  }
+
+  return <div>
+    <NewExpense onAddExpense={addExpenseHandler}/>
+    <Expenses expenses={expenses}/>
+  </div>
 }
 
 export default App;

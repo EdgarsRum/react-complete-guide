@@ -11,7 +11,7 @@ function Expenses(props) {
           <ExpenseItem
             key={expense.id}
             date={expense.date}
-            subject={expense.title}
+            title={expense.title}
             amount={expense.amount}
           />
       ))
