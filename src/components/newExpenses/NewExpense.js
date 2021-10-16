@@ -7,7 +7,8 @@ const NewExpense = (props) => {
 
   const [showForm, setShowForm] = useState(false);
 
-  const addNewExpenseHandler = (showForm) => setShowForm(showForm);
+  const showFormHandler = () => setShowForm(true);
+  const hideFormHandler = () => setShowForm(false);
   const saveExpenseDataHandler = (enteredExpenseData) => {
     const expenseData = {
       ...enteredExpenseData,
@@ -15,14 +16,15 @@ const NewExpense = (props) => {
     };
 
     props.onAddExpense(expenseData);
+    hideFormHandler();
   }
 
   return (
     <div className="new-expense">
       {
         showForm
-          ? <ExpenseForm onSaveExpenseData={saveExpenseDataHandler} onCancelExpenseForm={addNewExpenseHandler}/>
-          : <button onClick={() => addNewExpenseHandler(true)} type="button">Add New Expense</button>
+          ? <ExpenseForm onSaveExpenseData={saveExpenseDataHandler} onCancel={hideFormHandler}/>
+          : <button onClick={showFormHandler} type="button">Add New Expense</button>
       }
     </div>
   );
